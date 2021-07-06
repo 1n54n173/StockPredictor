@@ -1,41 +1,120 @@
-# Stock Price Predictor
-*Udacity - Machine learning Nano Degree Program : Project-6 (Capstone project)*
-
-## Project Overview
-*This is sixth and final capstone project in the series of the projects listed in Udacity- Machine Learning Nano Degree Program.*
+# StockPredictor
 
 Investment firms, hedge funds and even individuals have been using financial models to better understand market behavior and make profitable investments and trades. A wealth of information is available in the form of historical stock prices and company performance data, suitable for machine learning algorithms to process.
 
-Can we actually predict stock prices with machine learning? Investors make educated guesses by analyzing data. They'll read the news, study the company history, industry trends and other lots of data points that go into making a prediction. The prevailing theories is that stock prices are totally random and unpredictable but that raises the question why top firms like Morgan Stanley and Citigroup hire quantitative analysts to build predictive models. We have this idea of a trading floor being filled with adrenaline infuse men with loose ties running around yelling something into a phone but these days they're more likely to see rows of machine learning experts quietly sitting in front of computer screens. In fact about 70% of all orders on Wall Street are now placed by software, we're now living in the age of the algorithm.
+Investors make educated guesses by analyzing data. They'll read the news, study the company history, industry trends and other lots of data points that go into making a prediction. The prevailing theories is that stock prices are totally random and unpredictable but that raises the question why top firms like Morgan Stanley and Citigroup hire quantitative analysts to build predictive models.
 
 This project utilizes Deep Learning models, Long-Short Term Memory (LSTM) Neural Network algorithm, to predict stock prices. For data with timeframes recurrent neural networks (RNNs) come in handy but recent researches have shown that LSTM, networks are the most popular and useful variants of RNNs. 
 
 I have used Keras to build a LSTM to predict stock prices using historical closing price and trading volume and visualize both the predicted price values over time and the optimal parameters for the model.
 
-![Stock Price Predictor](https://github.com/Rajat-dhyani/Stock-Price-Predictor/blob/master/data_visualization_lstm_improved.png)
-
 
 ## Problem Highlights
 *The challenge of this project is to accurately predict the future closing value of a given stock across a given period of time in the future.  For this project I have used a Long Short Term Memory networks – usually just called “LSTMs” to predict the closing price of the S&P 500 using a dataset of past prices*
 
-* **Achievements:**
-  * Built a model to accurately predict the future closing price of a given stock, using Long Short Term Memory Neural net algorithm. 
-  * Achieved Mean Squared Error rating of just 0.00093063.
+## Project
 
-Things i have learnt by completing this project:
-* How to apply deep learning techniques: Long Short Term Memory Neural Network algorithms.
-* How to use keras-tensorflow library.
-* How to collect and preprocess given data.
-* How to analyze model's performance.
-* How to optimise Long Short Term Memory Neural Network algortithm, to ensure increase in postive results.
+Get the Data
 
-### Other Related Projects:
-* <strong> Project 0 : </strong> *[Titanic Survivals Prediction](https://github.com/Rajat-dhyani/titanic_survival)*
-* <strong> Project 1 : </strong> *[Boston's Houses Prediction](https://github.com/Rajat-dhyani/boston_housing)*
-* <strong> Project 2 : </strong> *[Charity Donors Prediction](https://github.com/Rajat-dhyani/charity_donors)*
-* <strong> Project 3 : </strong> *[Creating Customer Segments](https://github.com/Rajat-dhyani/creating_customer_segments)*
-* <strong> Project 4 : </strong> *[Smart Cab](https://github.com/Rajat-dhyani/smart-cab)*
-* <strong> Project 5 : </strong> *[ImageNetBot](https://github.com/Rajat-dhyani/ImageNetBot)*
+In the following cells we download and save the S&P 500 dataset.
+
+Step 1 : Define a function to get historical data from google finance
+
+Step 2: Get the data of desired firm from Google Finance.
+
+Step 3: Write the data to a csv file.
+
+
+
+Preprocess the data
+
+Now it is time to preprocess the data. In the following cells we will normalise it for better prediction of data.
+
+Step 1 : Get the data from csv file.
+
+Step 2 : Remove Unncessary data, i.e., Date and High value and Visualise raw data.
+
+![image](https://user-images.githubusercontent.com/56619771/124559876-ce540300-de59-11eb-9e2e-639870b54d31.png)
+
+Step 3 : Normalise the data using minmaxscaler function
+
+Step 4 : Visualize the data again
+
+![image](https://user-images.githubusercontent.com/56619771/124560154-212dba80-de5a-11eb-8fe2-aeb39505f2d1.png)
+
+Step 5: Log the normalised data for future resuablilty
+
+
+
+Bench Mark Model
+
+In this section we will check our bench mark model. As is proposed in my proposal my bench mark model is a simple linear regressor model.
+
+Step 1: Load the preprocessed data
+
+Step 2: Split data into train and test pair
+
+Step 3: Train a Linear regressor model on training set and get prediction
+
+Step 4: Get prediction on test set
+
+Step 5: Plot the predicted values against actual
+
+![image](https://user-images.githubusercontent.com/56619771/124560388-605c0b80-de5a-11eb-8196-5d85b9e52d97.png)
+
+Step 6: measure accuracy of the prediction
+
+
+
+Long-Sort Term Memory Model
+
+In this section we will use LSTM to train and test on our data set.
+
+
+Basic LSTM Model
+
+First lets make a basic LSTM model.
+
+Step 1 : import keras libraries for smooth implementaion of lstm
+
+Step 2 : Split train and test data sets and Unroll train and test data for lstm model
+
+Step 3 : Build a basic Long-Short Term Memory model
+
+Step 4: Train the model
+
+Step 5: make prediction using test data
+
+Step 6: Plot the results
+
+![image](https://user-images.githubusercontent.com/56619771/124560982-027bf380-de5b-11eb-89c4-0908e7df238b.png)
+
+Step 7: Get the test score.
+
+
+
+Improved LSTM Model
+
+Step 1: Build an improved LSTM model
+
+Step 2: Train improved LSTM model
+
+Step 3: Make prediction on improved LSTM model
+
+Step 4: plot the results
+![image](https://user-images.githubusercontent.com/56619771/124561155-348d5580-de5b-11eb-96ab-ec5738f71b20.png)
+
+Step 5: Get the test score
+
+
+
+Checking Robustness of the model
+
+In this section we will check robustness of our LSTM model. I have used new unseen datasets for this from July 1, 2017 to July 20,2017. I have downloaded the data sets from google finance website to check for robustness of the model.
+
+Test Score: 0.3897 MSE (0.6242 RMSE) is the test score i got for this model.
+
+
 
 ## Software and Libraries
 This project uses the following software and Python libraries:
